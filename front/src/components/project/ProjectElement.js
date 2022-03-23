@@ -27,6 +27,13 @@ function ProjectElement({
           <Col className="text-muted">
             {project?.from_date.slice(0, 10)} ~ {project?.to_date.slice(0, 10)}
           </Col>
+          {project.git !== "https://github.com" && (
+            <Col>
+              <a href={project.git} target="_blank" rel="noreferrer">
+                {project.git}
+              </a>
+            </Col>
+          )}
         </Col>
         {isEditable && (
           <Col xs lg="1">

@@ -10,6 +10,7 @@ function ProjectAddForm({ setIsAddingProject, setFinalEditedProject }) {
   const [description, setDescription] = useState("");
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
+  const [git, setGit] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function ProjectAddForm({ setIsAddingProject, setFinalEditedProject }) {
         description: description,
         from_date: fromDate,
         to_date: toDate,
+        git: git,
       };
       const res = await Api.post(`project/create`, Prj);
       const project = res.data;
@@ -58,6 +60,14 @@ function ProjectAddForm({ setIsAddingProject, setFinalEditedProject }) {
         </Form.Group>
         <Form.Group controlId="ProjectEditToDate" className="mb-3">
           <DatePicker selected={toDate} onChange={(date) => setToDate(date)} />
+        </Form.Group>
+        <Form.Group controlId="ProjectEditGit" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="링크(선택)"
+            value={git}
+            onChange={(e) => setGit(e.target.value)}
+          />
         </Form.Group>
         <Form.Group as={Row} className="mt-3 text-center">
           <Col sm={{ span: 20 }}>

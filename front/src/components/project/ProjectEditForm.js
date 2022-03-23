@@ -15,6 +15,7 @@ function ProjectEditForm({
   const [description, setDescription] = useState(project.description);
   const [fromDate, setFromDate] = useState(new Date(project.from_date));
   const [toDate, setToDate] = useState(new Date(project.to_date));
+  const [git, setGit] = useState(project.git);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ function ProjectEditForm({
         description: description,
         from_date: fromDate,
         to_date: toDate,
+        git: git,
       };
       await Api.put(`projects/${project._id}`, Prj);
       setEditingProjectList(`${project._id} 수정됨`);
@@ -77,6 +79,14 @@ function ProjectEditForm({
             onChange={(date) => {
               setToDate(date);
             }}
+          />
+        </Form.Group>
+        <Form.Group controlId="ProjectEditGit" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="링크(선택)"
+            value={git}
+            onChange={(e) => setGit(e.target.value)}
           />
         </Form.Group>
         <Form.Group as={Row} className="mt-3 text-center">
