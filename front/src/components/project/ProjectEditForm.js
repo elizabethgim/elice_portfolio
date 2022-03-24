@@ -80,6 +80,18 @@ function ProjectEditForm({
               setToDate(date);
             }}
           />
+          <Form.Group controlId="ProjectEditFromDate" className="mb-3">
+            <DatePicker
+              selected={fromDate}
+              onChange={(date) => setFromDate(date)}
+            />
+          </Form.Group>
+          <Form.Group controlId="ProjectEditToDate" className="mb-3">
+            <DatePicker
+              selected={toDate}
+              onChange={(date) => setToDate(date)}
+            />
+          </Form.Group>
         </Form.Group>
         <Form.Group controlId="ProjectEditGit" className="mb-3">
           <Form.Control

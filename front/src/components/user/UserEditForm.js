@@ -16,16 +16,15 @@ function UserEditForm({ user, setIsEditing, setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // "users/유저id" 엔드포인트로 PUT 요청함.
+    const data = profileImg[0];
+    //await Api.imgPost(`user/profileImg/${user.id}`, data);
     const formdata = new FormData();
-    formdata.append("uploadImage", profileImg[0]);
-    console.log(formdata);
-    // await Api.imgPost(`user/profileImg/${user.id}`, formdata);
+    formdata.append("profileImg", data);
+    formdata.append("name", name);
+    formdata.append("email", email);
+    formdata.append("description", description);
 
-    const res = await Api.put(`users/${user.id}`, {
-      name,
-      email,
-      description,
-    });
+    const res = await Api.formDataPut(`users/${user.id}`, formdata);
     // 유저 정보는 response의 data임.
     const updatedUser = res.data;
     console.log(updatedUser);
