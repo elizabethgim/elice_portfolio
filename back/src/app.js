@@ -6,11 +6,16 @@ import { educationRouter } from "./routers/educationRouter";
 import { awardRouter } from "./routers/awardRouter";
 import { projectRouter } from "./routers/projectRouter";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
+import { bodyParser } from 'body-parser';
 
 const app = express();
 
 // CORS 에러 방지
 app.use(cors());
+
+//multer 기본 설정
+app.use(bodyParser.urlencoded({ extended:true }));
+app.set("view engine", "ejs");
 
 // express 기본 제공 middleware
 // express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
