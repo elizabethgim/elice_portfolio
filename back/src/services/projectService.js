@@ -24,11 +24,6 @@ class projectService{
         return projects;
     }
 
-    // static getProjectList = async() => {
-    //     const projects = await Project.findAll();
-    //     return projects;
-    // }
-
     // 프로젝트 수정하기
     static setProject = async ({ project_id, toUpdate }) => {
         let project = await Project.findByUserId({ project_id });
